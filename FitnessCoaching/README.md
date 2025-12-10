@@ -25,10 +25,11 @@ Add exercises to a workout (e.g., squats, pushups, etc.)
     Users: name, ..., created_at, updated_at, deleted_at
     Programs: coach_id (FK)
     Coaches: name, ...
-    Session: user_id (FK), program_id(FK), progress
+    Session: user_id (FK), program_id(FK), progress, exercises_completed, total_exercises
     Exercises: name, category (chest)
     Program_Exercises: program_id (FK), exercise_id (FK), sets, reps
     Program_User: program_id (FK), user_id (FK)
+    Session_Exercise: session_id, exercise_id, current_set, current_rep, completed
 
     Relationships:
         Users:Session = 1:N  (many gets FK)

@@ -68,6 +68,7 @@ uvicorn app.main:app --reload
     - Field() Properties
         - booleans:
             primary_key, nullable, default(_factory), unique, index
+            Index columns that appear in WHERE, JOIN, ORDER BY, or GROUP BY clauses.
         - strs:
             foreign_key('table.id'), ondelete='CASCADE', onupdate='CASCADE'
     - Datetime Properties
