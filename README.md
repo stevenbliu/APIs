@@ -156,6 +156,8 @@ uvicorn app.main:app --reload
                     - q = select(User).order_by(User.created_at.desc())
                 - Limit + Offset
                     - q = (select(User).order_by(User.id).offset(20).limit(10))
+                - Cursor
+                    - q = (select(User).where(User.id > cursor).order_by(User.id).limit(10))
             - JOINS
                 - INNER
                     - q = (select(Exercise).join(ProgramExercise, ProgramExercise.exercise_id == Exercise.id).where(ProgramExercise.program_id == program_id))
