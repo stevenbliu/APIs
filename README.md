@@ -68,9 +68,10 @@ uvicorn app.main:app --reload
     - Field() Properties
         - booleans:
             primary_key, nullable, default(_factory), unique, index
-            Index columns that appear in WHERE, JOIN, ORDER BY, or GROUP BY clauses.
+                Index columns that appear in WHERE, JOIN, ORDER BY, or GROUP BY clauses.
         - strs:
             foreign_key('table.id'), ondelete='CASCADE', onupdate='CASCADE'
+                ondelete/onupdate options: 'CASCADE', 'RESTRICT', 'SET NULL'
     - Datetime Properties
         - updated_at: datetime = Field(default_factory=datetime.utcnow)
     - Relationship Properties
@@ -79,7 +80,7 @@ uvicorn app.main:app --reload
                 - sessions: list["Session"] = Relationship(back_populates="user")
             - class Session(SQLModel, table=True)
                 - user: User | None = Relationship(back_populates='sessions')
-                - # User | None is reccommended, because ORM may load object before relationship in populated in memory
+                    - # | None is recommended, because ORM may load object before relationship in populated in memory
         - Many: Many
             - class Program(SQLModel, table=True)
                 - exercises: list["Exercise"] = Relationship(
