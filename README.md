@@ -179,6 +179,15 @@ uvicorn app.main:app --reload
             - result.one() # exatly one row or error
             - result.scalar() # first column of first row
 
+### SQLAlchemy Engine
+
+    - from sqlmodel import create_engine, Session, SQLModel
+    - engine = create_engine("sqlite:///./app.db" )
+    - def get_session(engine):
+        with Session(engine) as session:
+            yield session
+    - def init_db()
+
 ## Testing
 
 ### Pytest

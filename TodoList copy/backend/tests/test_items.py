@@ -1,6 +1,7 @@
 # test_crud.py
 from app.models import User, Item
 from app.crud import create_user, get_user_by_email
+import pytest
 import uuid
 
 
@@ -16,12 +17,12 @@ def test_create_user(session):
     # assert fetched.hashed_password == "hashedpassword"
 
 
-# def test_email_required(session):
-#     # Email is required
-#     with pytest.raises(Exception):
-#         user = User(id=uuid.uuid4(), hashed_password="pass")  # missing email
-#         session.add(user)
-#         session.commit()
+def test_email_required(session):
+    # Email is required
+    with pytest.raises(Exception):
+        user = User(id=uuid.uuid4(), hashed_password="pass")  # missing email
+        session.add(user)
+        session.commit()
 
 
 def test_user_defaults(session):
